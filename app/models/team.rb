@@ -17,7 +17,7 @@ class Team < ActiveRecord::Base
 #this is an entirely independent method... its a Class Method. Hence the "self"
 
   def self.fivehundred_teams
-		Team.where("((wins_total * 1.0) / (wins_total + loss_total)) > .5")
+		Team.where("((wins_total * 1.0) / (wins_total + loss_total)) >= .5")
   end
 
 end

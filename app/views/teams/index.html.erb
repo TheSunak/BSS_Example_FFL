@@ -45,10 +45,10 @@
 
 <h3>Teams That Have 50% Winning Percentage</h3>
 <div id="fivehundred_teams">
-  
+
 </div>
 
-<script type="text/javascript">
+  <script type="text/javascript">
   $.ajax("/teams/fivehundred_teams", {
     success: function(data) {
       $.each(data, function() {
@@ -57,3 +57,4 @@
     }
   });
 </script>
+
