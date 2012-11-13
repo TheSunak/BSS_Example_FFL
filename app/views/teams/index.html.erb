@@ -1,0 +1,49 @@
+<h1>Fantasy Football Team Standings</h1>
+
+
+
+<h3>Add New Teams</h3>
+<%= form_for(Team.new) do |f| %>
+  <%= f.label "Name:" %> <%= f.text_field :name %>
+  <%= f.label "Wins:" %> <%= f.text_field :wins_total %>
+  <%= f.label "Losses:" %> <%= f.text_field :loss_total %>
+  </br><%= f.submit %>
+<% end %>
+
+
+<h3>League Stats</h3>
+<% @teams.each do |team| %>
+  <%= form_for(team) do |f| %>
+    <p>
+      <span>
+        <%= team.name %>
+      <span>
+      <span>
+        <%= team.wins_total %>
+      </span>
+      <span>
+        <%= team.loss_total %>
+      </span>
+      <span>
+        <%= link_to 'Destroy', team, :confirm => 'Are you sure?',
+                                        :method => :delete %>
+      </span>
+    </p>    
+  <% end %>    
+<% end %>
+<!--
+<h3>Good Students</h3>
+<div id="good_students">
+  
+</div>
+
+<script type="text/javascript">
+  $.ajax("/students/good_students", {
+    success: function(data) {
+      $.each(data, function() {
+        $("#good_students").append("<div>" + this.name + "</div>")
+      });
+    }
+  });
+</script>
+--> 

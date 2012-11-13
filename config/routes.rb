@@ -1,4 +1,9 @@
 Ffl::Application.routes.draw do
+
+  root :to => 'teams#index'
+
+  resources :teams
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
