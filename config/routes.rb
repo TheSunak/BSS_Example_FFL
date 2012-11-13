@@ -2,7 +2,12 @@ Ffl::Application.routes.draw do
 
   root :to => 'teams#index'
 
-  resources :teams
+  resources :teams do
+      collection do
+      get 'fivehundred_teams'
+    end
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

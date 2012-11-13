@@ -1,49 +1,59 @@
 <h1>Fantasy Football Team Standings</h1>
 
 
-
+<!-- This section of the code below is the simple input boxes for the page -->
 <h3>Add New Teams</h3>
 <%= form_for(Team.new) do |f| %>
   <%= f.label "Name:" %> <%= f.text_field :name %>
-  <%= f.label "Wins:" %> <%= f.text_field :wins_total %>
-  <%= f.label "Losses:" %> <%= f.text_field :loss_total %>
+  <%= f.label "Wins:" %> <%= f.number_field :wins_total %>
+  <%= f.label "Losses:" %> <%= f.number_field :loss_total %>
   </br><%= f.submit %>
 <% end %>
 
-
+<!-- This section of the Dynamically populates the League Stats, showing what's in the db -->
 <h3>League Stats</h3>
+
+<!-- With a Table for the display -->
+  <table border="1" cellpadding = "5">
+        <tr>
+            <th> Team Name </th>
+            <th> Total Wins </th>
+            <th> Total Losses </th>
+            <th> Win Percentage </th>
+            <th> Destroy it? </th>
+        </tr>
+    
+
 <% @teams.each do |team| %>
-  <%= form_for(team) do |f| %>
-    <p>
-      <span>
-        <%= team.name %>
-      <span>
-      <span>
-        <%= team.wins_total %>
-      </span>
-      <span>
-        <%= team.loss_total %>
-      </span>
-      <span>
-        <%= link_to 'Destroy', team, :confirm => 'Are you sure?',
-                                        :method => :delete %>
-      </span>
-    </p>    
+
+  <tr> 
+        <td><%= team.name %> </td>
+
+        <td> <%= team.wins_total %> </td>
+
+         <td><%= team.loss_total %> </td>
+
+        <td> <%= team.win_ratio %> </td>
+
+        <td> <%= link_to 'Destroy', team, :confirm => 'Are you sure?',
+                                        :method => :delete %> </td>
+</tr>
+
   <% end %>    
-<% end %>
-<!--
-<h3>Good Students</h3>
-<div id="good_students">
+
+</table>
+
+<h3>Teams That Have 50% Winning Percentage</h3>
+<div id="fivehundred_teams">
   
 </div>
 
 <script type="text/javascript">
-  $.ajax("/students/good_students", {
+  $.ajax("/teams/fivehundred_teams", {
     success: function(data) {
       $.each(data, function() {
-        $("#good_students").append("<div>" + this.name + "</div>")
+        $("#fivehundred_teams").append("<div>" + this.name + "</div>")
       });
     }
   });
 </script>
---> 

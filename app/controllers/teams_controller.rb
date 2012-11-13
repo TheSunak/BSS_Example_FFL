@@ -67,4 +67,13 @@ class TeamsController < ApplicationController
 
 	 end
 
+	 #Returns all of the good students in a JSON hash
+	  def fivehundred_teams
+	    @teams = Team.fivehundred_teams
+
+	    respond_to do |format|
+	      format.json { render :json => @teams }
+	    end
+	  end
+
 end
